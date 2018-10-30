@@ -16,6 +16,6 @@ class SleepMessageHandler implements MessageHandlerInterface
 
         # Simulate a long running process.
         sleep($seconds);
-        echo $output;
+        echo $output . PHP_EOL;
     }
 }

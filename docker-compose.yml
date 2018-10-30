@@ -13,6 +13,18 @@ services:
     networks:
      - symfony # Docker containers (services) that need to connect to each other should be on the same network.
 
+  php-consume:
+    build:
+      context: .
+      dockerfile: Dockerfile-php-consume
+    environment:
+     - DATABASE_URL=mysql://root:root@db:3306/project_db
+     - MESSENGER_TRANSPORT_DSN=amqp://guest:guest@rabbitmq:5672/%2f/messages
+    volumes:
+     - ./project/:/var/www/project/
+    networks:
+     - symfony
+
   nginx:
     build:
       context: .

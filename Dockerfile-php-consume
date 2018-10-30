@@ -12,4 +12,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
 COPY project/ /var/www/project
+COPY build/php-consume/ /var/www/scripts/
 WORKDIR /var/www/project/
+ENTRYPOINT ["bash", "/var/www/scripts/message_script.sh"]
