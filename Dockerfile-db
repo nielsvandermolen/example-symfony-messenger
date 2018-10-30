@@ -1,0 +1,3 @@
+# We use MariaDB, the schema is compatible with MYSQL.
+FROM mariadb:10
+
