@@ -29,20 +29,22 @@ services:
       context: .
       dockerfile: Dockerfile-db
     environment:
-    - MYSQL_ROOT_PASSWORD=root # Setting the MYSQL credentials to root:root.
+     - MYSQL_ROOT_PASSWORD=root # Setting the MYSQL credentials to root:root.
     volumes:
-    - symfony_db:/var/lib/mysql:cached # Persist the database in a Docker volume.
+     - symfony_db:/var/lib/mysql:cached # Persist the database in a Docker volume.
     ports:
-    - 3311:3306
+     - 3311:3306
     networks:
-    - symfony
+     - symfony
 
   rabbitmq: # The RabbitMQ container.
     build:
       context: .
       dockerfile: Dockerfile-rabbitmq
+    ports:
+     - 15672:15672
     volumes:
-      - rabbitmq:/var/lib/rabbitmq:cached
+     - rabbitmq:/var/lib/rabbitmq:cached
     networks:
      - symfony
 
