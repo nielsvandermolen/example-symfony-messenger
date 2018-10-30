@@ -3,9 +3,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         git \
         zlib1g-dev \
         libxml2-dev \
+        librabbitmq-dev \
     && docker-php-ext-install \
         pdo_mysql \
-        zip
+        zip \
+    && pecl install amqp \
+    && docker-php-ext-enable amqp # Enable the Extension
+
 RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
 COPY . /var/www/project
 WORKDIR /var/www/project/
