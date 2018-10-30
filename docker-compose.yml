@@ -36,8 +36,18 @@ services:
     networks:
     - symfony
 
+  rabbitmq: # The RabbitMQ container.
+    build:
+      context: .
+      dockerfile: Dockerfile-rabbitmq
+    volumes:
+      - rabbitmq:/var/lib/rabbitmq:cached
+    networks:
+     - symfony
+
 volumes:
   symfony_db:
+  rabbitmq:
 
 networks:
  symfony:
