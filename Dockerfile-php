@@ -3,6 +3,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         git \
         zlib1g-dev \
         libxml2-dev \
+        libzip-dev \
         librabbitmq-dev \
     && docker-php-ext-install \
         pdo_mysql \
